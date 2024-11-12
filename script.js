@@ -2,8 +2,8 @@ $.ajax({
     type: "get",
     url: "./json/new.json",
     success: function (response) {
-        var obj = JSON.stringify(response);
-        globalData = JSON.parse(obj);
+        const obj = JSON.stringify(response);
+        const globalData = JSON.parse(obj);
         const head = document.getElementById("dicreptions");
         head.innerHTML = `<h3>${globalData.description}</h3>`;
 
