@@ -56,15 +56,16 @@ $.ajax({
         const sortbtn = document.createElement('button');
         sortbtn.textContent = "Acending order";
         sort.appendChild(sortbtn);
+
         function sortedbyname(iteam) {
            return iteam.sort((a, b) => a.name.localeCompare(b.name));
         }
+
         sortbtn.addEventListener('click', function () {
             const sortediteam = sortedbyname(k);
-            console.log(sortediteam)
             sortedcard(sortediteam);
-
         });
+
         function sortedcard(y) {
             const sorted = document.getElementById('cards'); 
             cards.innerHTML="";
@@ -77,7 +78,33 @@ $.ajax({
                 sorted.appendChild(card);
             });
         }
-        
+        // Sorting in decending
+        const dec = document.getElementById("sorting");
+        const sortbtn2 = document.createElement('button');
+        sortbtn2.textContent = "Decensing order";
+        dec.appendChild(sortbtn2);
+
+        function sortedbynamedec(iteam) {
+           return iteam.sort((a, b) => b.name.localeCompare(a.name));
+        }
+
+        sortbtn2.addEventListener('click', function () {
+            const sortediteamdec = sortedbynamedec(k);
+            sortedcardec(sortediteamdec);
+        });
+
+        function sortedcardec(y) {
+            const sorteding = document.getElementById('cards'); 
+            cards.innerHTML="";
+            y.forEach(item => {
+                const card = document.createElement("div");
+                card.className = "card";
+                card.innerHTML = `<h2> ${item.name}</h2>
+                <p>Price : ${item.price}</p>
+                <p>${item.description}</p>`;
+                sorteding.appendChild(card);
+            });
+        }
         // Form validation
         const form = document.getElementById("form");
         form.addEventListener('submit', function (event) {
