@@ -8,7 +8,6 @@ $.ajax({
         head.innerHTML = `<h3>${globalData.description}</h3>`;
 
         const orginaldate = new Date(globalData.metadata.creationDate);
-        console.log(orginaldate);
         const options = { month: 'short', day: 'numeric', year: 'numeric', weekday: 'short',};
         const formatedate = orginaldate.toLocaleDateString('en-US', options);
 
@@ -52,30 +51,33 @@ $.ajax({
             });
         }
 
-        // Sorting
+        // Sorting Acending order
         const sort = document.getElementById("sorting");
         const sortbtn = document.createElement('button');
         sortbtn.textContent = "Acending order";
         sort.appendChild(sortbtn);
-        function sortedbyname(k) {
-            k.sort((a, b) => a.name.lolocaleCompare(b.name));
+        function sortedbyname(iteam) {
+           return iteam.sort((a, b) => a.name.localeCompare(b.name));
         }
         sortbtn.addEventListener('click', function () {
-            const y = sortedbyname(k);
-            console.log(k);
-            sortedcard(y);
-        })
-        function sortedcard(value) {
-            value.forEach(item => {
+            const sortediteam = sortedbyname(k);
+            console.log(sortediteam)
+            sortedcard(sortediteam);
+
+        });
+        function sortedcard(y) {
+            const sorted = document.getElementById('cards'); 
+            cards.innerHTML="";
+            y.forEach(item => {
                 const card = document.createElement("div");
                 card.className = "card";
                 card.innerHTML = `<h2> ${item.name}</h2>
                 <p>Price : ${item.price}</p>
                 <p>${item.description}</p>`;
-                cards.appendChild(card);
+                sorted.appendChild(card);
             });
         }
-
+        
         // Form validation
         const form = document.getElementById("form");
         form.addEventListener('submit', function (event) {
