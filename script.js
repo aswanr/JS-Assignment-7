@@ -39,6 +39,7 @@ $.ajax({
         function filterfun() {
             const inputvalue = document.getElementById('inputvalue').value;
             const fill = document.getElementById('filtediteams');
+            fill.innerHTML="";
             k.forEach(element => {
                 if (Number(inputvalue) >= element.price) {
                     const card = document.createElement("div");
