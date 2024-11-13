@@ -2,8 +2,8 @@ $.ajax({
     type: "get",
     url: "./json/new.json",
     success: function (response) {
-        var obj = JSON.stringify(response);
-        globalData = JSON.parse(obj);
+        const obj = JSON.stringify(response);
+        const globalData = JSON.parse(obj);
         const head = document.getElementById("dicreptions");
         head.innerHTML = `<h3>${globalData.description}</h3>`;
 
@@ -39,13 +39,14 @@ $.ajax({
         function filterfun() {
             const inputvalue = document.getElementById('inputvalue').value;
             const fill = document.getElementById('filtediteams');
+            fill.innerHTML="";
             k.forEach(element => {
                 if (Number(inputvalue) >= element.price) {
                     const card = document.createElement("div");
                     card.className = "card";
-                    card.innerHTML = `<h2> ${element.name}</h2>
-                    <p>Price : ${element.price}</p>
-                    <p>${element.description}</p>`;
+                    card.innerHTML = `<h2> ${element.name} </h2>
+                    <p>Price : ${element.price} </p>
+                    <p> ${element.description} </p>`;
                     fill.appendChild(card);
                 }
             });
