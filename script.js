@@ -22,32 +22,32 @@ obj.onload = function () {
         cards.appendChild(card);
     });
 
-        // 1)Write a JavaScript function to filter items in the array based on price (e.g., show only items over $500).
-        // Filter button
-        const filt = document.createElement('button');
-        const input = document.createElement('input');
-        filt.id = "filter";
-        input.id = "inputvalue"
-        filt.textContent = "filter"
-        head.appendChild(filt);
-        head.appendChild(input);
-        const filterbutton = document.getElementById('filter');
-        filterbutton.addEventListener('click', filterfun);
-        function filterfun() {
-            const inputvalue = document.getElementById('inputvalue').value;
-            const fill = document.getElementById('filtediteams');
-            fill.innerHTML="";
-            k.forEach(element => {
-                if (Number(inputvalue) >= element.price) {
-                    const card = document.createElement("div");
-                    card.className = "card";
-                    card.innerHTML = `<h2> ${element.name}</h2>
+    // 1)Write a JavaScript function to filter items in the array based on price (e.g., show only items over $500).
+    // Filter button
+    const filt = document.createElement('button');
+    const input = document.createElement('input');
+    filt.id = "filter";
+    input.id = "inputvalue"
+    filt.textContent = "filter"
+    head.appendChild(filt);
+    head.appendChild(input);
+    const filterbutton = document.getElementById('filter');
+    filterbutton.addEventListener('click', filterfun);
+    function filterfun() {
+        const inputvalue = document.getElementById('inputvalue').value;
+        const fill = document.getElementById('filtediteams');
+        fill.innerHTML = "";
+        k.forEach(element => {
+            if (Number(inputvalue) >= element.price) {
+                const card = document.createElement("div");
+                card.className = "card";
+                card.innerHTML = `<h2> ${element.name}</h2>
                     <p>Price : ${element.price}</p>
                     <p>${element.description}</p>`;
-                    fill.appendChild(card);
-                }
-            });
-        }
+                fill.appendChild(card);
+            }
+        });
+    }
 
     // 2)Create a function to sort the array of items by name or price in ascending or descending order.
     // Sorting Acending order
